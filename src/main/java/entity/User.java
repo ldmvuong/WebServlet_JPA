@@ -24,8 +24,8 @@ public class User implements Serializable {
     @Column(name = "fullName",columnDefinition = "VARCHAR(200) NOT NULL")
     private String fullname;
 
-    @Column(name = "address",columnDefinition = "VARCHAR(500)")
-    private String address;
+    @Column(name = "email",columnDefinition = "VARCHAR(500)")
+    private String email;
 
     @Column(name = "username", columnDefinition = "VARCHAR(500) NOT NULL")
     private String username;
@@ -45,4 +45,5 @@ public class User implements Serializable {
 
     @Column(name = "phone",columnDefinition = "VARCHAR(11) NOT NULL")
     private String phone;
+
 }

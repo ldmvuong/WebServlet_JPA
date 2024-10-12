@@ -13,6 +13,7 @@ import java.util.List;
 
 public class CategoryDaoImpl implements ICategoryDao {
 
+
     @Override
     public void insert(Category category) {
         EntityManager entityManager = JPAConfig.getEntityManager();
