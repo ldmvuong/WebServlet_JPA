@@ -10,7 +10,6 @@
 
 <a href="<c:url value='/admin/category/add'/>">Add Category</a>
 
-
 <table border="1" width="100%">
     <tr>
         <th>STT</th>
@@ -19,32 +18,38 @@
         <th>Status</th>
         <th>Action</th>
     </tr>
+
     <c:forEach items="${listcate}" var="cate" varStatus="STT">
         <tr>
-            <td>${STT.index+1 }</td>
+            <td>${STT.index + 1}</td>
 
             <td>
-                <c:if test="${cate.images.substring(0,5) != 'https'}">
-                    <c:url value="/image?fname=${cate.images}" var="imgUrl"></c:url>
-                </c:if>
-                <c:if test="${cate.images.substring(0,5) == 'https'}">
-                    <c:url value="${cate.images}" var="imgUrl"></c:url>
-                </c:if>
-
+                <c:choose>
+                    <c:when test="${cate.images.substring(0, 5) != 'https'}">
+                        <c:url value="/image?fname=${cate.images}" var="imgUrl"/>
+                    </c:when>
+                    <c:otherwise>
+                        <c:url value="${cate.images}" var="imgUrl"/>
+                    </c:otherwise>
+                </c:choose>
                 <img height="150" width="200" src="${imgUrl}" />
             </td>
-            <td>${cate.categoryname }</td>
+
+            <td>${cate.categoryname}</td>
+
             <td>
-                <c:if test="${cate.status ==1}">
+                <c:if test="${cate.status == 1}">
                     Hoạt động
                 </c:if>
-                <c:if test="${cate.status ==0}">
-                    Khong hoat dong
+                <c:if test="${cate.status == 0}">
+                    Không hoạt động
                 </c:if>
             </td>
 
-            <td><a href="<c:url value='/admin/category/edit?id=${cate.categoryid }'/>" class="center">Sửa</a>
-                | <a href="<c:url value='/admin/category/delete?id=${cate.categoryid }'/>" class="center">Xóa</a>
+            <td>
+                <a href="<c:url value='/admin/category/edit?id=${cate.categoryid}'/>" class="center">Sửa</a> |
+                <a href="<c:url value='/admin/category/delete?id=${cate.categoryid}'/>" class="center">Xóa</a> |
+                <a href="<c:url value='/admin/video/add?categoryId=${cate.categoryid}'/>" class="center">Thêm video</a>
             </td>
         </tr>
     </c:forEach>

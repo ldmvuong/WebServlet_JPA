@@ -10,7 +10,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "videos")
-@NamedQuery(name = "Videos.findAll", query = "SELECT v FROM Video v")
+@NamedQuery(name = "Video.findAll", query = "SELECT v FROM Video v")
 public class Video implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,7 @@ public class Video implements Serializable {
     private String poster;
 
     @Column(name = "title", columnDefinition = "LONGTEXT")
-    private int title;
+    private String title;
 
     @Column(name = "views")
     private int views;
